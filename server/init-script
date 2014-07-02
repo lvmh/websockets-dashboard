@@ -1,0 +1,54 @@
+#! /bin/sh -e
+#### BEGIN INIT INFO
+# Provides:          dashboard
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: E-Learning dashboard
+# Description:       E-Learning dashboard web service.
+### END INIT INFO
+#
+# Author:   Jonathan Harker <jonathan@catalyst.net.nz>  
+#
+
+NAME="elearning-dashboard"
+DESC="E-Learning dashboard web service"
+
+INSTALLDIR="/var/www/$NAME"
+USER="www-data"
+PIDFILE="/var/run/$NAME"
+SCRIPTNAME="/etc/init.d/$NAME"
+PATH="/bin:/usr/bin:/sbin:/usr/sbin"
+SERVERSCRIPT="$INSTALLDIR/server/server.py"
+
+# Quit if uninstalled
+test -x $STARTSCRIPT || exit 0
+
+. /lib/lsb/init-functions
+
+case "$1" in
+  start)
+    log_daemon_msg "Starting $DESC" "$NAME"
+    start-stop-daemon -x $INSTALLDIR/enabled-plugins/nagios/update.php -b -m -p $PIDFILE-nagios --start
+    start-stop-daemon -x $INSTALLDIR/enabled-plugins/wrms/update.php -b -m -p $PIDFILE-wrms --start
+    start-stop-daemon -x $SERVERSCRIPT -b -m -p $PIDFILE --start
+    log_end_msg $?
+    ;;
+  stop)
+    log_daemon_msg "Stopping $DESC" "$NAME"
+    start-stop-daemon -p $PIDFILE-nagios --stop --retry 5 && rm $PIDFILE-nagios || true
+    start-stop-daemon -p $PIDFILE-wrms --stop --retry 5 && rm $PIDFILE-wrms || true
+    start-stop-daemon -p $PIDFILE --stop --retry 5 && rm $PIDFILE || echo -n " $NAME is not running."
+    log_end_msg $?
+    ;;
+  force-reload|restart|reload)
+    log_daemon_msg "Restarting $DESC" "$NAME"
+    $0 stop
+    $0 start
+    log_end_msg $?
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+    ;;
+esac
+exit 0
