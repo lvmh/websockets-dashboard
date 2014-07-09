@@ -35,9 +35,10 @@ case "$1" in
     ;;
   stop)
     log_daemon_msg "Stopping $DESC" "$NAME"
-    start-stop-daemon -p $PIDFILE-nagios --stop --retry 5 && rm $PIDFILE-nagios || true
-    start-stop-daemon -p $PIDFILE-wrms --stop --retry 5 && rm $PIDFILE-wrms || true
-    start-stop-daemon -p $PIDFILE --stop --retry 5 && rm $PIDFILE || echo -n " $NAME is not running."
+    start-stop-daemon -p $PIDFILE-nagios --stop --retry 5 || true
+    start-stop-daemon -p $PIDFILE-wrms --stop --retry 5 || true
+    start-stop-daemon -p $PIDFILE --stop --retry 5 || echo -n " $NAME is not running."
+    rm $PIDFILE* 2> /dev/null
     log_end_msg $?
     ;;
   force-reload|restart|reload)
