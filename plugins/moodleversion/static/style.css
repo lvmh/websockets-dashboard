@@ -1,0 +1,107 @@
+div#moodleversion {
+    background-color: #666;
+    padding: 0.5em 1em;
+    margin: 0.5em 0 0;
+    color: #fff;
+    text-shadow: 0 0 0.3em #000;
+}
+
+div#moodleversion .OK {
+    background-color: #62aa2d;
+}
+
+div#moodleversion .Critical {
+    background-color: #f00;
+}
+
+.laggingversion {
+    background-color: #f00;
+}
+
+div#moodleversion .Warning {
+    background-color: #f90;
+}
+
+div#moodleversion .Unknown {
+    background-color: #ff8c00;
+}
+
+div#moodleversion h2 abbr {
+    float: right;
+    font-size: 85%;
+}
+
+div#moodleversion ul {
+    padding: 0 0 0 1em;
+    margin: 0;
+}
+
+div#moodleversion div {
+    position: relative;
+    clear: left;
+}
+
+div#moodleversion ul li {
+    display: block;
+    width: 33%;
+    color: #fff;
+    font-weight: bold;
+    background-color: #666;
+    float: left;
+}
+
+div#moodleversion div.lastchange {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0.25em 0;
+}
+
+div#moodleversion table.status {
+    margin: 1em 0;
+    font-size: 150%;
+    color: #D3D4D4;
+}
+
+/**
+div#moodleversion table.status img {
+    display: none;
+}
+**/
+
+div#moodleversion table.status > tr > td:nth-child(1) {
+    padding-left: 1em;
+}
+
+div#moodleversion table.status tr td:nth-child(3) {
+    text-align: right;
+    padding-right: 1em;
+}
+
+div#moodleversion table.status tr th,
+div#moodleversion table.status tr td:nth-child(4),
+div#moodleversion table.status tr td:nth-child(5),
+div#moodleversion table.status tr td:nth-child(6),
+div#moodleversion table.status tr td:nth-child(7),
+div#moodleversion table.status tr td:nth-child(8) {
+    display: none;
+}
+
+div#moodleversion div.itemTotalsTitle {
+  display: none;
+}
+
+body.dashboard-fullscreen div#moodleversion h2 {
+    font-size: 250%;
+}
+
+body.dashboard-fullscreen div#moodleversion ul li {
+    font-size: 120%;
+}
+
+body.dashboard-fullscreen div#moodleversion table.status {
+    font-size: 250%;
+}
