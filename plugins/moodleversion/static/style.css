@@ -6,10 +6,18 @@ div#moodleversion {
     text-shadow: 0 0 0.3em #000;
 }
 
+div#moodleversion h1 {
+    color: #fff;
+    text-color: #000
+}
+
 div#moodleversion .OK {
     background-color: #62aa2d;
 }
 
+div#moodleversion .CRITICAL {
+    background-color: #f00;
+}
 div#moodleversion .Critical {
     background-color: #f00;
 }

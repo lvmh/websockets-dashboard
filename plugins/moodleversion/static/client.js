@@ -92,10 +92,14 @@ plugins.moodleversion = {
             // Create a section 'lagging div' to describe if there are any sites lagging behind the latest security release, and which ones.
             var laggingsites = versioninfo.behindlatest
             var laggingdiv = '<div class="behindlatest"><span class="laggingsummary">'
-            if (laggingsites.length == 1) {
-                laggingdiv = laggingdiv + '1 site'
+            if (laggingsites.length == 0) {
+                    laggingdiv = laggingdiv + '<span class="laggingcount OK">0 sites</span>'
             } else {
-                laggingdiv = laggingdiv + laggingsites.length + ' sites'
+                if (laggingsites.length == 1) {
+                    laggingdiv = laggingdiv + '<span class="laggingcount CRITICAL">1 site</span>'
+                } else {
+                    laggingdiv = laggingdiv + '<span class="laggingcount CRITICAL">' + laggingsites.count + ' sites</span>'
+                }
             }
             laggingdiv = laggingdiv + ' behind the latest security release.</span></div>'
             versiondiv.append(laggingdiv)
