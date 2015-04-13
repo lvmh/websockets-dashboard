@@ -1,9 +1,5 @@
 div#moodleversion {
-    background-color: #666;
-    padding: 0.5em 1em;
-    margin: 0.5em 0 0;
     color: #fff;
-    text-shadow: 0 0 0.3em #000;
 }
 
 div#moodleversion h1 {
@@ -54,7 +50,6 @@ div#moodleversion ul li {
     width: 33%;
     color: #fff;
     font-weight: bold;
-    background-color: #666;
     float: left;
 }
 
