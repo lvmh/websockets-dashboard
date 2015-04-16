@@ -34,6 +34,7 @@ def setup_config():
     CONFIG['nagios']['Auckland'] = con.get('nagios', 'Auckland')
     CONFIG['nagios']['Chicago'] = con.get('nagios', 'Chicago')
     CONFIG['nagios']['NCEL'] = con.get('nagios', 'NCEL')
+    CONFIG['nagios']['Staging'] = con.get('nagios', 'Staging')
 
 
 # Generic push to dashboard function
